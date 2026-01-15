@@ -102,7 +102,7 @@ body {
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, rgba(45, 80, 22, 0.8), rgba(74, 124, 44, 0.6)),
-        url('C:/Users/Sandesh Chipkar/.gemini/antigravity/brain/87f7fe11-23a8-4c5e-a2d4-601d69de8089/farmer_hero_image_1768409078107.png');
+        url('../public/farmer.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
