@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amenities Rental - Farmer Connect</title>
+    <meta name="description" content="Rent seeds, fertilizers & equipment at affordable rates">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/amenities-styles.css">
+</head>
+
+<body class="amenities-body">
+    <!-- Header -->
+    <header class="amenities-header">
+        <div class="header-container">
+            <div class="header-top">
+                <div class="page-title-section">
+                    <h1 class="page-title">🌱 Amenities Rental</h1>
+                    <p class="page-subtitle">Rent seeds, fertilizers & equipment at affordable rates</p>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="notificationBtn" title="Notifications">
+                        🔔
+                        <span class="notification-badge">2</span>
+                    </button>
+                    <div class="user-menu">
+                        <div class="user-avatar" id="userMenuBtn">
+                            <span id="userInitials">F</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-main">
+                <div class="location-selector">
+                    <span class="location-icon">📍</span>
+                    <select id="locationSelect" class="location-input">
+                        <option value="pune">Pune, Maharashtra</option>
+                        <option value="nashik">Nashik, Maharashtra</option>
+                        <option value="solapur">Solapur, Maharashtra</option>
+                    </select>
+                </div>
+            </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="amenities-main">
+        <div class="amenities-container">
+            <a href="./farmer-dashboard.html" class="back-link">← Back to Dashboard</a><br><br>
+            <!-- Incentive Banner -->
+            <div class="incentive-banner">
+                <div class="incentive-icon">🎁</div>
+                <div class="incentive-content">
+                    <p class="incentive-text"><strong>Special Offer:</strong> Sell crops via marketplace & get
+                        <strong>25% rental discount</strong>
+                    </p>
+                </div>
+                <button class="incentive-close">×</button>
+            </div>
+
+            <!-- Category Selection -->
+            <section class="category-section">
+                <h2 class="section-title">Browse by Category</h2>
+                <div class="category-grid">
+                    <div class="category-card active" data-category="all">
+                        <div class="category-icon">🌾</div>
+                        <h3 class="category-name">All Items</h3>
+                        <p class="category-count">156 items</p>
+                    </div>
+                    <div class="category-card" data-category="seeds">
+                        <div class="category-icon">🌱</div>
+                        <h3 class="category-name">Seeds</h3>
+                        <p class="category-count">45 items</p>
+                    </div>
+                    <div class="category-card" data-category="fertilizers">
+                        <div class="category-icon">🧪</div>
+                        <h3 class="category-name">Fertilizers</h3>
+                        <p class="category-count">38 items</p>
+                    </div>
+                    <div class="category-card" data-category="machinery">
+                        <div class="category-icon">🚜</div>
+                        <h3 class="category-name">Machinery</h3>
+                        <p class="category-count">42 items</p>
+                    </div>
+                    <div class="category-card" data-category="irrigation">
+                        <div class="category-icon">💧</div>
+                        <h3 class="category-name">Irrigation</h3>
+                        <p class="category-count">21 items</p>
+                    </div>
+                    <div class="category-card" data-category="organic">
+                        <div class="category-icon">♻️</div>
+                        <h3 class="category-name">Organic</h3>
+                        <p class="category-count">10 items</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search & Filter Section -->
+            <section class="search-filter-section">
+                <div class="search-bar-container">
+                    <div class="search-bar">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" placeholder="Search seed, tractor, fertilizer..."
+                            class="search-input">
+                        <button class="voice-search-btn" title="Voice Search">🎤</button>
+                    </div>
+                    <button class="filter-toggle-btn" id="filterToggleBtn">
+                        <span>⚙️</span> Filters
+                        <span class="filter-count hidden" id="filterCount">0</span>
+                    </button>
+                </div>
+
+                <!-- Filter Panel -->
+                <div class="filter-panel hidden" id="filterPanel">
+                    <div class="filter-header">
+                        <h3>Filters</h3>
+                        <button class="clear-filters-btn" id="clearFiltersBtn">Clear All</button>
+                    </div>
+                    <div class="filter-content">
+                        <div class="filter-group">
+                            <label class="filter-label">Crop Type</label>
+                            <select class="filter-select" id="cropTypeFilter">
+                                <option value="">All Crops</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="rice">Rice</option>
+                                <option value="cotton">Cotton</option>
+                                <option value="sugarcane">Sugarcane</option>
+                                <option value="vegetables">Vegetables</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Season</label>
+                            <select class="filter-select" id="seasonFilter">
+                                <option value="">All Seasons</option>
+                                <option value="kharif">Kharif</option>
+                                <option value="rabi">Rabi</option>
+                                <option value="zaid">Zaid</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Rental Duration</label>
+                            <select class="filter-select" id="durationFilter">
+                                <option value="">Any Duration</option>
+                                <option value="day">Per Day</option>
+                                <option value="week">Per Week</option>
+                                <option value="season">Per Season</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Price Range (₹)</label>
+                            <div class="price-range">
+                                <input type="number" id="minPrice" placeholder="Min" class="price-input">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="Max" class="price-input">
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Availability</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="available"> Available Now
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="nearby"> Nearby (< 10km) </label>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">Sort By</label>
+                            <select class="filter-select" id="sortFilter">
+                                <option value="popular">Most Popular</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="newest">Newest First</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" id="cancelFilterBtn">Cancel</button>
+                        <button class="btn btn-primary" id="applyFilterBtn">Apply Filters</button>
+                    </div>
+                </div>
+
+                <!-- Active Filters Chips -->
+                <div class="active-filters hidden" id="activeFilters"></div>
+            </section>
+
+            <!-- Amenities Listing -->
+            <section class="amenities-listing">
+                <div class="listing-header">
+                    <h2 class="section-title">Available Amenities</h2>
+                    <p class="listing-count"><span id="itemCount">156</span> items found</p>
+                </div>
+
+                <div class="amenities-grid" id="amenitiesGrid">
+                    <!-- Amenity Cards will be dynamically generated -->
+                </div>
+
+                <!-- Load More -->
+                <div class="load-more-container">
+                    <button class="btn btn-outline btn-large" id="loadMoreBtn">Load More Items</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/amenities.js"></script>
+</body>
+
+</html>
