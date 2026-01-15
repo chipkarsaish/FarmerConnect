@@ -52,6 +52,8 @@ body {
     background-color: var(--bg-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
 }
 
 /* Navbar */
@@ -290,17 +292,56 @@ body {
 }
 
 .modal-content {
-    position: relative;
     background: white;
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
     max-width: 500px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
+    position: relative;
     box-shadow: var(--shadow-xl);
     animation: slideUp 0.3s ease;
 }
+
+/* Custom Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 20px;
+    margin: 4px 0;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-green) 0%, #16a34a 100%);
+    border-radius: 20px;
+    border: 2px solid #f1f5f9;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #16a34a 0%, #15803d 100%);
+}
+
+/* Hide scrollbar buttons (arrows) */
+.modal-content::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Scrollbar corner */
+.modal-content::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Firefox Scrollbar */
+.modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-green) #f1f5f9;
+}
+
+
 
 .modal-close {
     position: absolute;
@@ -562,6 +603,8 @@ body {
 .dashboard-body {
     background: #f5f7fa;
     min-height: 100vh;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
 }
 
 /* Dashboard Header */
@@ -570,7 +613,7 @@ body {
     box-shadow: var(--shadow-sm);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .header-container {
@@ -832,7 +875,15 @@ body {
     margin-bottom: var(--spacing-lg);
 }
 
-/* Dashboard Grid */
+/* Quick Actions Grid - Adaptive Layout */
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Dashboard Tiles */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

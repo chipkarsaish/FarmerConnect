@@ -349,6 +349,8 @@ function initializeEventListeners() {
 
     // Filter
     document.getElementById('filterBtn')?.addEventListener('click', handleFilter);
+    document.getElementById('applyFilters')?.addEventListener('click', applyFilters);
+    document.getElementById('clearFilters')?.addEventListener('click', clearFilters);
 
     // Modal close
     document.getElementById('modalClose')?.addEventListener('click', closeModal);
@@ -406,7 +408,87 @@ function handleSearch(event) {
 
 // Handle Filter
 function handleFilter() {
-    alert('Filter options:\n\n- Status (Completed/In Progress/Cancelled)\n- Date Range\n- Amount Range\n- Payment Mode\n\nThis will open a filter panel in the full implementation.');
+    const filterPanel = document.getElementById('filterPanel');
+    filterPanel.classList.toggle('hidden');
+}
+
+// Apply Filters
+function applyFilters() {
+    const statusCheckboxes = document.querySelectorAll('.filter-checkbox input[type="checkbox"]');
+    const selectedStatuses = [];
+
+    statusCheckboxes.forEach(checkbox => {
+        if (checkbox.checked && checkbox.value !== 'all') {
+            selectedStatuses.push(checkbox.value);
+        }
+    });
+
+    const startDate = document.getElementById('startDate').value;
+    const endDate = document.getElementById('endDate').value;
+
+    let orders = mockOrders[currentTab] || [];
+
+    // Filter by status
+    if (selectedStatuses.length > 0) {
+        orders = orders.filter(order => selectedStatuses.includes(order.status));
+    }
+
+    // Filter by date range
+    if (startDate || endDate) {
+        orders = orders.filter(order => {
+            const orderDate = new Date(order.date);
+            const start = startDate ? new Date(startDate) : new Date('2000-01-01');
+            const end = endDate ? new Date(endDate) : new Date('2100-12-31');
+            return orderDate >= start && orderDate <= end;
+        });
+    }
+
+    // Display filtered orders
+    const containerId = `${currentTab}Orders`;
+    const container = document.getElementById(containerId);
+
+    if (orders.length === 0) {
+        container.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-secondary);">No orders found matching your filters</p>';
+        return;
+    }
+
+    container.innerHTML = orders.map(order => createOrderCard(order)).join('');
+
+    // Re-attach click listeners
+    container.querySelectorAll('.view-details-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const orderId = btn.dataset.orderId;
+            const order = findOrderById(orderId);
+            if (order) {
+                showOrderDetail(order);
+            }
+        });
+    });
+
+    // Close filter panel
+    document.getElementById('filterPanel').classList.add('hidden');
+}
+
+// Clear Filters
+function clearFilters() {
+    // Reset checkboxes
+    document.querySelectorAll('.filter-checkbox input[type="checkbox"]').forEach(checkbox => {
+        if (checkbox.value === 'all') {
+            checkbox.checked = true;
+        } else {
+            checkbox.checked = false;
+        }
+    });
+
+    // Reset date inputs
+    document.getElementById('startDate').value = '';
+    document.getElementById('endDate').value = '';
+
+    // Reload orders
+    loadOrders(currentTab);
+
+    // Close filter panel
+    document.getElementById('filterPanel').classList.add('hidden');
 }
 
 // Close Modal

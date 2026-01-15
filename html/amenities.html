@@ -11,31 +11,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/farmer-sidebar.css">
     <link rel="stylesheet" href="../css/amenities-styles.css">
 </head>
 
 <body class="amenities-body">
+    <!-- Mobile Sidebar Toggle -->
+    <button class="mobile-sidebar-toggle" style="display: none;">☰</button>
+
+    <!-- Farmer Sidebar -->
+    <aside class="farmer-sidebar">
+        <button class="sidebar-toggle">◀</button>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active"><a href="amenities.html" data-tooltip="Amenities"><span
+                            class="nav-icon">🌱</span><span class="nav-text">Amenities</span></a></li>
+                <li><a href="carbon-credits.html" data-tooltip="Carbon Credits"><span class="nav-icon">🌍</span><span
+                            class="nav-text">Carbon Credits</span></a></li>
+                <li><a href="group-farming.html" data-tooltip="Group Farming"><span class="nav-icon">🤝</span><span
+                            class="nav-text">Group Farming</span></a></li>
+                <li><a href="funds.html" data-tooltip="Funds & Loans"><span class="nav-icon">💰</span><span
+                            class="nav-text">Funds & Loans</span></a></li>
+                <li><a href="availability.html" data-tooltip="Availability"><span class="nav-icon">📅</span><span
+                            class="nav-text">Availability</span></a></li>
+                <li><a href="my-orders.html" data-tooltip="My Orders"><span class="nav-icon">📦</span><span
+                            class="nav-text">My Orders</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
     <!-- Header -->
-    <header class="amenities-header">
+    <header class="dashboard-header">
         <div class="header-container">
-            <div class="header-top">
-                <div class="page-title-section">
-                    <h1 class="page-title">🌱 Amenities Rental</h1>
-                    <p class="page-subtitle">Rent seeds, fertilizers & equipment at affordable rates</p>
-                </div>
-                <div class="header-actions">
-                    <button class="icon-btn" id="notificationBtn" title="Notifications">
-                        🔔
-                        <span class="notification-badge">2</span>
-                    </button>
-                    <div class="user-menu">
-                        <div class="user-avatar" id="userMenuBtn">
-                            <span id="userInitials">F</span>
-                        </div>
+            <div class="logo">
+                <span class="logo-icon">🌾</span>
+                <span class="logo-text">Farmer Connect</span>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" id="notificationBtn" title="Notifications">
+                    🔔
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userMenuBtn">
+                        <span id="userInitials">F</span>
                     </div>
                 </div>
             </div>
-            <div class="header-main">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="amenities-main main-content-with-sidebar">
+        <div class="amenities-container">
+            <a href="./farmer-dashboard.html" class="back-link">← Back to Dashboard</a>
+
+            <!-- Page Title Section -->
+            <section class="page-title-section-main">
+                <h1 class="page-main-title">🌱 Amenities Rental</h1>
+                <p class="page-main-subtitle">Rent seeds, fertilizers & equipment at affordable rates</p>
+            </section>
+
+            <!-- Location Selector -->
+            <section class="location-controls">
                 <div class="location-selector">
                     <span class="location-icon">📍</span>
                     <select id="locationSelect" class="location-input">
@@ -44,13 +83,7 @@
                         <option value="solapur">Solapur, Maharashtra</option>
                     </select>
                 </div>
-            </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="amenities-main">
-        <div class="amenities-container">
-            <a href="./farmer-dashboard.html" class="back-link">← Back to Dashboard</a><br><br>
+            </section>
             <!-- Incentive Banner -->
             <div class="incentive-banner">
                 <div class="incentive-icon">🎁</div>
@@ -209,6 +242,7 @@
     </main>
 
     <script src="../js/common.js"></script>
+    <script src="../js/farmer-sidebar.js"></script>
     <script src="../js/amenities.js"></script>
 </body>
 
