@@ -11,7 +11,11 @@ class I18n {
     // Load translation file for a specific language
     async loadTranslations(lang) {
         try {
-            const response = await fetch(`../translations/${lang}.json`);
+            // Use root-relative path for GitHub Pages compatibility
+            const basePath = window.location.pathname.includes('/Farmers/')
+                ? '/Farmers/translations/'
+                : '/translations/';
+            const response = await fetch(`${basePath}${lang}.json`);
             if (!response.ok) throw new Error(`Failed to load ${lang}.json`);
             this.translations[lang] = await response.json();
             return true;
