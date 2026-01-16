@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/farmer-sidebar.css">
     <link rel="stylesheet" href="../css/amenities-styles.css">
+    <link rel="stylesheet" href="../css/language-switcher.css">
 </head>
 
 <body class="amenities-body">
@@ -26,17 +27,18 @@
         <nav class="sidebar-nav">
             <ul>
                 <li class="active"><a href="amenities.html" data-tooltip="Amenities"><span
-                            class="nav-icon">🌱</span><span class="nav-text">Amenities</span></a></li>
+                            class="nav-icon">🌱</span><span class="nav-text"
+                            data-i18n="sidebar.amenities">Amenities</span></a></li>
                 <li><a href="carbon-credits.html" data-tooltip="Carbon Credits"><span class="nav-icon">🌍</span><span
-                            class="nav-text">Carbon Credits</span></a></li>
+                            class="nav-text" data-i18n="sidebar.carbonCredits">Carbon Credits</span></a></li>
                 <li><a href="group-farming.html" data-tooltip="Group Farming"><span class="nav-icon">🤝</span><span
-                            class="nav-text">Group Farming</span></a></li>
+                            class="nav-text" data-i18n="sidebar.groupFarming">Group Farming</span></a></li>
                 <li><a href="funds.html" data-tooltip="Funds & Loans"><span class="nav-icon">💰</span><span
-                            class="nav-text">Funds & Loans</span></a></li>
+                            class="nav-text" data-i18n="sidebar.funds">Funds & Loans</span></a></li>
                 <li><a href="availability.html" data-tooltip="Availability"><span class="nav-icon">📅</span><span
-                            class="nav-text">Availability</span></a></li>
+                            class="nav-text" data-i18n="sidebar.availability">Availability</span></a></li>
                 <li><a href="my-orders.html" data-tooltip="My Orders"><span class="nav-icon">📦</span><span
-                            class="nav-text">My Orders</span></a></li>
+                            class="nav-text" data-i18n="sidebar.myOrders">My Orders</span></a></li>
             </ul>
         </nav>
     </aside>
@@ -49,6 +51,12 @@
                 <span class="logo-text">Farmer Connect</span>
             </div>
             <div class="header-actions">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="hi">हिंदी</button>
+                    <button class="lang-btn" data-lang="mr">मराठी</button>
+                </div>
                 <button class="icon-btn" id="notificationBtn" title="Notifications">
                     🔔
                     <span class="notification-badge">2</span>
@@ -65,12 +73,14 @@
     <!-- Main Content -->
     <main class="amenities-main main-content-with-sidebar">
         <div class="amenities-container">
-            <a href="./farmer-dashboard.html" class="back-link">← Back to Dashboard</a>
+            <a href="./farmer-dashboard.html" class="back-link" data-i18n="common.backToDashboard">← Back to
+                Dashboard</a>
 
             <!-- Page Title Section -->
             <section class="page-title-section-main">
-                <h1 class="page-main-title">🌱 Amenities Rental</h1>
-                <p class="page-main-subtitle">Rent seeds, fertilizers & equipment at affordable rates</p>
+                <h1 class="page-main-title" data-i18n="amenities.pageTitle">🌱 Amenities Rental</h1>
+                <p class="page-main-subtitle" data-i18n="amenities.pageSubtitle">Rent seeds, fertilizers & equipment at
+                    affordable rates</p>
             </section>
 
             <!-- Location Selector -->
@@ -88,8 +98,10 @@
             <div class="incentive-banner">
                 <div class="incentive-icon">🎁</div>
                 <div class="incentive-content">
-                    <p class="incentive-text"><strong>Special Offer:</strong> Sell crops via marketplace & get
-                        <strong>25% rental discount</strong>
+                    <p class="incentive-text"><strong data-i18n="amenities.incentive.specialOffer">Special
+                            Offer:</strong> <span data-i18n="amenities.incentive.discount">Sell crops via marketplace &
+                            get</span>
+                        <strong data-i18n="amenities.incentive.discountAmount">25% rental discount</strong>
                     </p>
                 </div>
                 <button class="incentive-close">×</button>
@@ -97,37 +109,37 @@
 
             <!-- Category Selection -->
             <section class="category-section">
-                <h2 class="section-title">Browse by Category</h2>
+                <h2 class="section-title" data-i18n="amenities.categories.title">Browse by Category</h2>
                 <div class="category-grid">
                     <div class="category-card active" data-category="all">
                         <div class="category-icon">🌾</div>
-                        <h3 class="category-name">All Items</h3>
-                        <p class="category-count">156 items</p>
+                        <h3 class="category-name" data-i18n="amenities.categories.all">All Items</h3>
+                        <p class="category-count">156 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
                     <div class="category-card" data-category="seeds">
                         <div class="category-icon">🌱</div>
-                        <h3 class="category-name">Seeds</h3>
-                        <p class="category-count">45 items</p>
+                        <h3 class="category-name" data-i18n="amenities.categories.seeds">Seeds</h3>
+                        <p class="category-count">45 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
                     <div class="category-card" data-category="fertilizers">
                         <div class="category-icon">🧪</div>
-                        <h3 class="category-name">Fertilizers</h3>
-                        <p class="category-count">38 items</p>
+                        <h3 class="category-name" data-i18n="amenities.categories.fertilizers">Fertilizers</h3>
+                        <p class="category-count">38 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
                     <div class="category-card" data-category="machinery">
                         <div class="category-icon">🚜</div>
-                        <h3 class="category-name">Machinery</h3>
-                        <p class="category-count">42 items</p>
+                        <h3 class="category-name" data-i18n="amenities.categories.machinery">Machinery</h3>
+                        <p class="category-count">42 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
                     <div class="category-card" data-category="irrigation">
                         <div class="category-icon">💧</div>
-                        <h3 class="category-name">Irrigation</h3>
-                        <p class="category-count">21 items</p>
+                        <h3 class="category-name" data-i18n="amenities.categories.irrigation">Irrigation</h3>
+                        <p class="category-count">21 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
                     <div class="category-card" data-category="organic">
                         <div class="category-icon">♻️</div>
-                        <h3 class="category-name">Organic</h3>
-                        <p class="category-count">10 items</p>
+                        <h3 class="category-name" data-i18n="amenities.categories.organic">Organic</h3>
+                        <p class="category-count">10 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
                 </div>
             </section>
@@ -137,12 +149,12 @@
                 <div class="search-bar-container">
                     <div class="search-bar">
                         <span class="search-icon">🔍</span>
-                        <input type="text" id="searchInput" placeholder="Search seed, tractor, fertilizer..."
-                            class="search-input">
+                        <input type="text" id="searchInput" data-i18n-placeholder="amenities.search.placeholder"
+                            placeholder="Search seed, tractor, fertilizer..." class="search-input">
                         <button class="voice-search-btn" title="Voice Search">🎤</button>
                     </div>
                     <button class="filter-toggle-btn" id="filterToggleBtn">
-                        <span>⚙️</span> Filters
+                        <span>⚙️</span> <span data-i18n="amenities.search.filters">Filters</span>
                         <span class="filter-count hidden" id="filterCount">0</span>
                     </button>
                 </div>
@@ -150,71 +162,81 @@
                 <!-- Filter Panel -->
                 <div class="filter-panel hidden" id="filterPanel">
                     <div class="filter-header">
-                        <h3>Filters</h3>
-                        <button class="clear-filters-btn" id="clearFiltersBtn">Clear All</button>
+                        <h3 data-i18n="amenities.search.filters">Filters</h3>
+                        <button class="clear-filters-btn" id="clearFiltersBtn"
+                            data-i18n="amenities.search.clearAll">Clear All</button>
                     </div>
                     <div class="filter-content">
                         <div class="filter-group">
-                            <label class="filter-label">Crop Type</label>
+                            <label class="filter-label" data-i18n="amenities.filters.cropType">Crop Type</label>
                             <select class="filter-select" id="cropTypeFilter">
-                                <option value="">All Crops</option>
-                                <option value="wheat">Wheat</option>
-                                <option value="rice">Rice</option>
-                                <option value="cotton">Cotton</option>
-                                <option value="sugarcane">Sugarcane</option>
-                                <option value="vegetables">Vegetables</option>
+                                <option value="" data-i18n="amenities.filters.allCrops">All Crops</option>
+                                <option value="wheat" data-i18n="amenities.filters.wheat">Wheat</option>
+                                <option value="rice" data-i18n="amenities.filters.rice">Rice</option>
+                                <option value="cotton" data-i18n="amenities.filters.cotton">Cotton</option>
+                                <option value="sugarcane" data-i18n="amenities.filters.sugarcane">Sugarcane</option>
+                                <option value="vegetables" data-i18n="amenities.filters.vegetables">Vegetables</option>
                             </select>
                         </div>
                         <div class="filter-group">
-                            <label class="filter-label">Season</label>
+                            <label class="filter-label" data-i18n="amenities.filters.season">Season</label>
                             <select class="filter-select" id="seasonFilter">
-                                <option value="">All Seasons</option>
-                                <option value="kharif">Kharif</option>
-                                <option value="rabi">Rabi</option>
-                                <option value="zaid">Zaid</option>
+                                <option value="" data-i18n="amenities.filters.allSeasons">All Seasons</option>
+                                <option value="kharif" data-i18n="amenities.filters.kharif">Kharif</option>
+                                <option value="rabi" data-i18n="amenities.filters.rabi">Rabi</option>
+                                <option value="zaid" data-i18n="amenities.filters.zaid">Zaid</option>
                             </select>
                         </div>
                         <div class="filter-group">
-                            <label class="filter-label">Rental Duration</label>
+                            <label class="filter-label" data-i18n="amenities.filters.rentalDuration">Rental
+                                Duration</label>
                             <select class="filter-select" id="durationFilter">
-                                <option value="">Any Duration</option>
-                                <option value="day">Per Day</option>
-                                <option value="week">Per Week</option>
-                                <option value="season">Per Season</option>
+                                <option value="" data-i18n="amenities.filters.anyDuration">Any Duration</option>
+                                <option value="day" data-i18n="amenities.filters.perDay">Per Day</option>
+                                <option value="week" data-i18n="amenities.filters.perWeek">Per Week</option>
+                                <option value="season" data-i18n="amenities.filters.perSeason">Per Season</option>
                             </select>
                         </div>
                         <div class="filter-group">
-                            <label class="filter-label">Price Range (₹)</label>
+                            <label class="filter-label" data-i18n="amenities.filters.priceRange">Price Range (₹)</label>
                             <div class="price-range">
-                                <input type="number" id="minPrice" placeholder="Min" class="price-input">
+                                <input type="number" id="minPrice" data-i18n-placeholder="amenities.filters.min"
+                                    placeholder="Min" class="price-input">
                                 <span>-</span>
-                                <input type="number" id="maxPrice" placeholder="Max" class="price-input">
+                                <input type="number" id="maxPrice" data-i18n-placeholder="amenities.filters.max"
+                                    placeholder="Max" class="price-input">
                             </div>
                         </div>
                         <div class="filter-group">
-                            <label class="filter-label">Availability</label>
+                            <label class="filter-label" data-i18n="amenities.filters.availability">Availability</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-label">
-                                    <input type="checkbox" value="available"> Available Now
+                                    <input type="checkbox" value="available"> <span
+                                        data-i18n="amenities.filters.availableNow">Available Now</span>
                                 </label>
                                 <label class="checkbox-label">
-                                    <input type="checkbox" value="nearby"> Nearby (< 10km) </label>
+                                    <input type="checkbox" value="nearby"> <span
+                                        data-i18n="amenities.filters.nearby">Nearby (< 10km)</span> </label>
                             </div>
                         </div>
                         <div class="filter-group">
-                            <label class="filter-label">Sort By</label>
+                            <label class="filter-label" data-i18n="amenities.filters.sortBy">Sort By</label>
                             <select class="filter-select" id="sortFilter">
-                                <option value="popular">Most Popular</option>
-                                <option value="price-low">Price: Low to High</option>
-                                <option value="price-high">Price: High to Low</option>
-                                <option value="rating">Highest Rated</option>
-                                <option value="newest">Newest First</option>
+                                <option value="popular" data-i18n="amenities.filters.mostPopular">Most Popular</option>
+                                <option value="price-low" data-i18n="amenities.filters.priceLowToHigh">Price: Low to
+                                    High</option>
+                                <option value="price-high" data-i18n="amenities.filters.priceHighToLow">Price: High to
+                                    Low</option>
+                                <option value="rating" data-i18n="amenities.filters.highestRated">Highest Rated</option>
+                                <option value="newest" data-i18n="amenities.filters.newestFirst">Newest First</option>
                             </select>
                         </div>
                     </div>
                     <div class="filter-actions">
-                        <button class="btn btn-outline" id="cancelFilterBtn">Cancel</button>
-                        <button class="btn btn-primary" id="applyFilterBtn">Apply Filters</button>
+                        <button class="btn btn-outline" id="cancelFilterBtn"
+                            data-i18n="amenities.search.cancel">Cancel</button>
+                        <button class="btn btn-primary" id="applyFilterBtn"
+                            data-i18n="amenities.search.applyFilters">Apply Filters</button>
                     </div>
                 </div>
 
@@ -225,8 +247,9 @@
             <!-- Amenities Listing -->
             <section class="amenities-listing">
                 <div class="listing-header">
-                    <h2 class="section-title">Available Amenities</h2>
-                    <p class="listing-count"><span id="itemCount">156</span> items found</p>
+                    <h2 class="section-title" data-i18n="amenities.listing.title">Available Amenities</h2>
+                    <p class="listing-count"><span id="itemCount">156</span> <span
+                            data-i18n="amenities.listing.itemsFound">items found</span></p>
                 </div>
 
                 <div class="amenities-grid" id="amenitiesGrid">
@@ -235,12 +258,14 @@
 
                 <!-- Load More -->
                 <div class="load-more-container">
-                    <button class="btn btn-outline btn-large" id="loadMoreBtn">Load More Items</button>
+                    <button class="btn btn-outline btn-large" id="loadMoreBtn"
+                        data-i18n="amenities.listing.loadMore">Load More Items</button>
                 </div>
             </section>
         </div>
     </main>
 
+    <script src="../js/i18n.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/farmer-sidebar.js"></script>
     <script src="../js/amenities.js"></script>

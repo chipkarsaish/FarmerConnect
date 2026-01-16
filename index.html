@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/language-switcher.css">
 </head>
 
 <body>
@@ -23,8 +24,14 @@
                 <span class="logo-text">Farmer Connect</span>
             </div>
             <div class="nav-buttons">
-                <button class="btn btn-outline" id="loginBtn">Login</button>
-                <button class="btn btn-primary" id="registerBtn">Register</button>
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="hi">हिंदी</button>
+                    <button class="lang-btn" data-lang="mr">मराठी</button>
+                </div>
+                <button class="btn btn-outline" id="loginBtn" data-i18n="nav.login">Login</button>
+                <button class="btn btn-primary" id="registerBtn" data-i18n="nav.register">Register</button>
             </div>
         </div>
     </nav>
@@ -33,12 +40,16 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Empowering Farmers, <span class="highlight">Growing Together</span></h1>
-            <p class="hero-subtitle">Your complete agricultural ecosystem for rentals, marketplace, sustainability, and
+            <h1 class="hero-title" data-i18n="hero.title">Empowering Farmers, <span class="highlight">Growing
+                    Together</span></h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">Your complete agricultural ecosystem for rentals,
+                marketplace, sustainability, and
                 cooperative growth</p>
             <div class="hero-cta">
-                <button class="btn btn-large btn-primary" id="heroRegisterBtn">Get Started</button>
-                <button class="btn btn-large btn-outline-light" id="heroLearnBtn">Learn More</button>
+                <button class="btn btn-large btn-primary" id="heroRegisterBtn" data-i18n="hero.getStarted">Get
+                    Started</button>
+                <button class="btn btn-large btn-outline-light" id="heroLearnBtn" data-i18n="hero.learnMore">Learn
+                    More</button>
             </div>
         </div>
     </section>
@@ -46,32 +57,37 @@
     <!-- Features Overview -->
     <section class="features">
         <div class="container">
-            <h2 class="section-title">What We Offer</h2>
+            <h2 class="section-title" data-i18n="features.title">What We Offer</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🌱</div>
-                    <h3>Amenity Rental</h3>
-                    <p>Affordable rental of seeds, fertilizers, and equipment with flexible payment options</p>
+                    <h3 data-i18n="features.amenities.title">Amenity Rental</h3>
+                    <p data-i18n="features.amenities.description">Affordable rental of seeds, fertilizers, and equipment
+                        with flexible payment options</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🛒</div>
-                    <h3>Marketplace</h3>
-                    <p>Sell your crops directly and earn 25% rental discounts</p>
+                    <h3 data-i18n="features.marketplace.title">Marketplace</h3>
+                    <p data-i18n="features.marketplace.description">Sell your crops directly and earn 25% rental
+                        discounts</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌍</div>
-                    <h3>Carbon Credits</h3>
-                    <p>Earn credits for sustainable farming and convert them to cash or discounts</p>
+                    <h3 data-i18n="features.carbon.title">Carbon Credits</h3>
+                    <p data-i18n="features.carbon.description">Earn credits for sustainable farming and convert them to
+                        cash or discounts</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤝</div>
-                    <h3>Group Farming</h3>
-                    <p>Form cooperatives for bulk discounts and shared resources</p>
+                    <h3 data-i18n="features.group.title">Group Farming</h3>
+                    <p data-i18n="features.group.description">Form cooperatives for bulk discounts and shared resources
+                    </p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
-                    <h3>Farmer Loans</h3>
-                    <p>Access financial assistance for farming supplies and equipment</p>
+                    <h3 data-i18n="features.loans.title">Farmer Loans</h3>
+                    <p data-i18n="features.loans.description">Access financial assistance for farming supplies and
+                        equipment</p>
                 </div>
             </div>
         </div>
@@ -85,33 +101,33 @@
 
             <!-- Role Selection -->
             <div class="auth-step" id="roleSelection">
-                <h2 class="modal-title">Choose Your Role</h2>
-                <p class="modal-subtitle">Select how you want to join Farmer Connect</p>
+                <h2 class="modal-title" data-i18n="auth.chooseRole">Choose Your Role</h2>
+                <p class="modal-subtitle" data-i18n="auth.selectRole">Select how you want to join Farmer Connect</p>
                 <div class="role-cards">
                     <div class="role-card" data-role="farmer">
                         <div class="role-icon">👨‍🌾</div>
-                        <h3>Farmer</h3>
-                        <p>Access rentals, marketplace, and cooperative features</p>
+                        <h3 data-i18n="auth.farmer">Farmer</h3>
+                        <p data-i18n="auth.farmerDesc">Access rentals, marketplace, and cooperative features</p>
                     </div>
                     <div class="role-card" data-role="administrator">
                         <div class="role-icon">👔</div>
-                        <h3>Administrator</h3>
-                        <p>Manage platform operations and user accounts</p>
+                        <h3 data-i18n="auth.admin">Administrator</h3>
+                        <p data-i18n="auth.adminDesc">Manage platform operations and user accounts</p>
                     </div>
                 </div>
             </div>
 
             <!-- Login Form -->
             <div class="auth-step hidden" id="loginForm">
-                <button class="back-btn" id="backToRoleFromLogin">← Back</button>
+                <button class="back-btn" id="backToRoleFromLogin" data-i18n="auth.back">← Back</button>
                 <h2 class="modal-title">Login as <span id="loginRoleText"></span></h2>
                 <form class="auth-form">
                     <div class="form-group">
-                        <label for="loginEmail">Email Address</label>
+                        <label for="loginEmail" data-i18n="auth.email">Email Address</label>
                         <input type="email" id="loginEmail" placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="loginPassword">Password</label>
+                        <label for="loginPassword" data-i18n="auth.password">Password</label>
                         <input type="password" id="loginPassword" placeholder="Enter your password" required>
                     </div>
                     <div class="form-options">
@@ -189,6 +205,7 @@
         </div>
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/script.js"></script>
 </body>
 
