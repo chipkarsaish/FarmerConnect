@@ -82,7 +82,44 @@ body {
     gap: var(--spacing-xs);
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-green);
+}
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.75rem;
+    letter-spacing: -1px;
+}
+
+.logo-agri {
+    color: #E67E22;
+    /* Deep Orange */
+    position: relative;
+}
+
+.logo-sahay {
+    color: #5DBAAA;
+    /* Dark Teal */
+}
+
+.logo-leaf {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    font-size: 1rem;
+    animation: leafFloat 3s ease-in-out infinite;
+}
+
+@keyframes leafFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(5deg);
+    }
 }
 
 .logo-icon {
@@ -104,7 +141,7 @@ body {
     background: linear-gradient(135deg, rgba(45, 80, 22, 0.8), rgba(74, 124, 44, 0.6)),
         url('../public/farmer.png');
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
     background-attachment: fixed;
     color: var(--text-light);
     text-align: center;
@@ -174,8 +211,23 @@ body {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Center the last two cards in the second row */
+.feature-card:nth-child(4) {
+    grid-column: 1 / 2;
+    margin-left: auto;
+    margin-right: calc(var(--spacing-lg) / 2);
+}
+
+.feature-card:nth-child(5) {
+    grid-column: 2 / 3;
+    margin-left: calc(var(--spacing-lg) / 2);
+    margin-right: auto;
 }
 
 .feature-card {
@@ -505,6 +557,19 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 968px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-card:nth-child(4),
+    .feature-card:nth-child(5) {
+        grid-column: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.5rem;
@@ -528,6 +593,13 @@ body {
 
     .features-grid {
         grid-template-columns: 1fr;
+    }
+
+    .feature-card:nth-child(4),
+    .feature-card:nth-child(5) {
+        grid-column: auto;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .nav-buttons {
