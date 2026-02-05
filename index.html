@@ -10,200 +10,390 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/language-switcher.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'farmer': {
+                            'green': {
+                                DEFAULT: '#2d5016',
+                                50: '#f0f7ed',
+                                100: '#e1f0da',
+                                200: '#c3e1b5',
+                                300: '#a5d290',
+                                400: '#87c36b',
+                                500: '#4a7c2c',
+                                600: '#2d5016',
+                                700: '#244012',
+                                800: '#1b300e',
+                                900: '#12200a',
+                            },
+                            'gold': {
+                                DEFAULT: '#f59e0b',
+                                light: '#fbbf24',
+                                50: '#fffbeb',
+                                100: '#fef3c7',
+                                200: '#fde68a',
+                                300: '#fcd34d',
+                                400: '#fbbf24',
+                                500: '#f59e0b',
+                                600: '#d97706',
+                                700: '#b45309',
+                                800: '#92400e',
+                                900: '#78350f',
+                            },
+                            'teal': '#5DBAAA',
+                            'orange': '#E67E22',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'display': ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'fadeInUp': 'fadeInUp 1s ease-out',
+                        'slideUp': 'slideUp 0.3s ease',
+                        'slideDown': 'slideDown 0.3s ease',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-3px) rotate(5deg)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles for elements that need special treatment */
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.85), rgba(74, 124, 44, 0.7)),
+                url('public/farmer.png');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .modal-overlay-blur {
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+    </style>
 </head>
 
-<body>
+<body class="font-sans antialiased">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-text">
-                    <span class="logo-agri">Agr<span class="logo-leaf">🌿</span>i</span><span
-                        class="logo-sahay">Sahay</span>
-                </span>
-            </div>
-            <div class="nav-buttons">
-                <!-- Language Switcher -->
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="en">English</button>
-                    <button class="lang-btn" data-lang="hi">हिंदी</button>
-                    <button class="lang-btn" data-lang="mr">मराठी</button>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 glass-effect shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <span class="font-display font-black text-2xl sm:text-3xl tracking-tight">
+                        <span class="text-farmer-orange relative">
+                            Agr<span class="absolute -top-3 -right-2 text-base animate-float">🌿</span>i
+                        </span>
+                        <span class="text-farmer-teal">Sahay</span>
+                    </span>
                 </div>
-                <button class="btn btn-outline" id="loginBtn" data-i18n="nav.login">Login</button>
-                <button class="btn btn-primary" id="registerBtn" data-i18n="nav.register">Register</button>
+
+                <!-- Navigation Buttons -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <!-- Language Switcher -->
+                    <div class="flex items-center gap-1 bg-gray-50 p-1 rounded-xl shadow-sm">
+                        <button
+                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white bg-farmer-green-600 rounded-lg transition-all duration-200 hover:bg-farmer-green-700"
+                            data-lang="en">English</button>
+                        <button
+                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-600 hover:bg-farmer-green-50 hover:text-farmer-green-600 rounded-lg transition-all duration-200"
+                            data-lang="hi">हिंदी</button>
+                        <button
+                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-600 hover:bg-farmer-green-50 hover:text-farmer-green-600 rounded-lg transition-all duration-200"
+                            data-lang="mr">मराठी</button>
+                    </div>
+
+                    <button id="loginBtn"
+                        class="hidden sm:inline-flex px-4 py-2 text-sm font-semibold text-farmer-green-600 border-2 border-farmer-green-600 rounded-lg hover:bg-farmer-green-50 transition-all duration-200"
+                        data-i18n="nav.login">Login</button>
+                    <button id="registerBtn"
+                        class="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-farmer-green-600 to-farmer-green-500 rounded-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                        data-i18n="nav.register">Register</button>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title" data-i18n="hero.title">Empowering Farmers, <span class="highlight">Growing
-                    Together</span></h1>
-            <p class="hero-subtitle" data-i18n="hero.subtitle">Your complete agricultural ecosystem for rentals,
-                marketplace, sustainability, and
-                cooperative growth</p>
-            <div class="hero-cta">
-                <button class="btn btn-large btn-primary" id="heroRegisterBtn" data-i18n="hero.getStarted">Get
-                    Started</button>
-                <button class="btn btn-large btn-outline-light" id="heroLearnBtn" data-i18n="hero.learnMore">Learn
-                    More</button>
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white text-center relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50"></div>
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 animate-fadeInUp">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
+                data-i18n="hero.title">
+                Empowering Farmers, <span class="text-farmer-gold-300 relative">Growing Together</span>
+            </h1>
+            <p class="text-lg sm:text-xl lg:text-2xl mb-12 opacity-95 font-light max-w-3xl mx-auto"
+                data-i18n="hero.subtitle">
+                Your complete agricultural ecosystem for rentals, marketplace, sustainability, and cooperative growth
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                <button id="heroRegisterBtn"
+                    class="px-8 py-4 text-base sm:text-lg font-semibold text-white bg-gradient-to-r from-farmer-green-600 to-farmer-green-500 rounded-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                    data-i18n="hero.getStarted">
+                    Get Started
+                </button>
+                <button id="heroLearnBtn"
+                    class="px-8 py-4 text-base sm:text-lg font-semibold text-white border-2 border-white rounded-xl hover:bg-white hover:text-farmer-green-600 transition-all duration-300"
+                    data-i18n="hero.learnMore">
+                    Learn More
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Features Overview -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title" data-i18n="features.title">What We Offer</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌱</div>
-                    <h3 data-i18n="features.amenities.title">Amenity Rental</h3>
-                    <p data-i18n="features.amenities.description">Affordable rental of seeds, fertilizers, and equipment
-                        with flexible payment options</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛒</div>
-                    <h3 data-i18n="features.marketplace.title">Marketplace</h3>
-                    <p data-i18n="features.marketplace.description">Sell your crops directly and earn 25% rental
-                        discounts</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3 data-i18n="features.carbon.title">Carbon Credits</h3>
-                    <p data-i18n="features.carbon.description">Earn credits for sustainable farming and convert them to
-                        cash or discounts</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3 data-i18n="features.group.title">Group Farming</h3>
-                    <p data-i18n="features.group.description">Form cooperatives for bulk discounts and shared resources
+    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-farmer-green-600 mb-12 sm:mb-16"
+                data-i18n="features.title">
+                What We Offer
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Feature Card 1 -->
+                <div
+                    class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center border-2 border-transparent hover:border-farmer-green-200">
+                    <div class="text-5xl sm:text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🌱
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-farmer-green-600 mb-3"
+                        data-i18n="features.amenities.title">Amenity Rental</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="features.amenities.description">
+                        Affordable rental of seeds, fertilizers, and equipment with flexible payment options
                     </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3 data-i18n="features.loans.title">Farmer Loans</h3>
-                    <p data-i18n="features.loans.description">Access financial assistance for farming supplies and
-                        equipment</p>
+
+                <!-- Feature Card 2 -->
+                <div
+                    class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center border-2 border-transparent hover:border-farmer-green-200">
+                    <div class="text-5xl sm:text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🛒
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-farmer-green-600 mb-3"
+                        data-i18n="features.marketplace.title">Marketplace</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="features.marketplace.description">
+                        Sell your crops directly and earn 25% rental discounts
+                    </p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div
+                    class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center border-2 border-transparent hover:border-farmer-green-200">
+                    <div class="text-5xl sm:text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🌍
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-farmer-green-600 mb-3"
+                        data-i18n="features.carbon.title">Carbon Credits</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="features.carbon.description">
+                        Earn credits for sustainable farming and convert them to cash or discounts
+                    </p>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div
+                    class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center border-2 border-transparent hover:border-farmer-green-200 sm:col-start-1 lg:col-start-auto">
+                    <div class="text-5xl sm:text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🤝
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-farmer-green-600 mb-3"
+                        data-i18n="features.group.title">Group Farming</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="features.group.description">
+                        Form cooperatives for bulk discounts and shared resources
+                    </p>
+                </div>
+
+                <!-- Feature Card 5 -->
+                <div
+                    class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center border-2 border-transparent hover:border-farmer-green-200">
+                    <div class="text-5xl sm:text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">💰
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-farmer-green-600 mb-3"
+                        data-i18n="features.loans.title">Farmer Loans</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="features.loans.description">
+                        Access financial assistance for farming supplies and equipment
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Authentication Modal -->
-    <div class="modal" id="authModal">
-        <div class="modal-overlay" id="modalOverlay"></div>
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">&times;</button>
+    <div id="authModal" class="hidden fixed inset-0 z-[2000] items-center justify-center animate-fadeIn">
+        <div id="modalOverlay" class="absolute inset-0 bg-black/70 modal-overlay-blur"></div>
+        <div
+            class="relative bg-white rounded-3xl p-6 sm:p-8 lg:p-10 max-w-md sm:max-w-lg w-[90%] max-h-[90vh] overflow-y-auto shadow-2xl animate-slideUp">
+            <button id="modalClose"
+                class="absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-400 hover:text-gray-600 text-3xl sm:text-4xl transition-colors duration-200">&times;</button>
 
             <!-- Role Selection -->
             <div class="auth-step" id="roleSelection">
-                <h2 class="modal-title" data-i18n="auth.chooseRole">Choose Your Role</h2>
-                <p class="modal-subtitle" data-i18n="auth.selectRole">Select how you want to join AgriSahay</p>
-                <div class="role-cards">
-                    <div class="role-card" data-role="farmer">
-                        <div class="role-icon">👨‍🌾</div>
-                        <h3 data-i18n="auth.farmer">Farmer</h3>
-                        <p data-i18n="auth.farmerDesc">Access rentals, marketplace, and cooperative features</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-farmer-green-600 mb-2" data-i18n="auth.chooseRole">Choose
+                    Your Role</h2>
+                <p class="text-gray-600 mb-8" data-i18n="auth.selectRole">Select how you want to join AgriSahay</p>
+                <div class="grid gap-4 sm:gap-6">
+                    <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-farmer-green-600 hover:bg-gradient-to-br hover:from-farmer-green-50 hover:to-farmer-green-100/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-center"
+                        data-role="farmer">
+                        <div class="text-5xl mb-4">👨‍🌾</div>
+                        <h3 class="text-xl font-semibold text-farmer-green-600 mb-2" data-i18n="auth.farmer">Farmer</h3>
+                        <p class="text-sm text-gray-600" data-i18n="auth.farmerDesc">Access rentals, marketplace, and
+                            cooperative features</p>
                     </div>
-                    <div class="role-card" data-role="administrator">
-                        <div class="role-icon">👔</div>
-                        <h3 data-i18n="auth.admin">Administrator</h3>
-                        <p data-i18n="auth.adminDesc">Manage platform operations and user accounts</p>
+                    <div class="role-card p-6 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-farmer-green-600 hover:bg-gradient-to-br hover:from-farmer-green-50 hover:to-farmer-green-100/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-center"
+                        data-role="administrator">
+                        <div class="text-5xl mb-4">👔</div>
+                        <h3 class="text-xl font-semibold text-farmer-green-600 mb-2" data-i18n="auth.admin">
+                            Administrator</h3>
+                        <p class="text-sm text-gray-600" data-i18n="auth.adminDesc">Manage platform operations and user
+                            accounts</p>
                     </div>
                 </div>
             </div>
 
             <!-- Login Form -->
             <div class="auth-step hidden" id="loginForm">
-                <button class="back-btn" id="backToRoleFromLogin" data-i18n="auth.back">← Back</button>
-                <h2 class="modal-title">Login as <span id="loginRoleText"></span></h2>
-                <form class="auth-form">
-                    <div class="form-group">
-                        <label for="loginEmail" data-i18n="auth.email">Email Address</label>
-                        <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                <button id="backToRoleFromLogin"
+                    class="mb-6 text-gray-600 hover:text-farmer-green-600 font-medium transition-colors duration-200"
+                    data-i18n="auth.back">← Back</button>
+                <h2 class="text-2xl sm:text-3xl font-bold text-farmer-green-600 mb-8">Login as <span
+                        id="loginRoleText"></span></h2>
+                <form class="space-y-6">
+                    <div>
+                        <label for="loginEmail" class="block mb-2 font-medium text-gray-700"
+                            data-i18n="auth.email">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                     </div>
-                    <div class="form-group">
-                        <label for="loginPassword" data-i18n="auth.password">Password</label>
-                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <div>
+                        <label for="loginPassword" class="block mb-2 font-medium text-gray-700"
+                            data-i18n="auth.password">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                     </div>
-                    <div class="form-options">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="rememberMe">
-                            <span>Remember me</span>
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer text-sm">
+                            <input type="checkbox" id="rememberMe"
+                                class="w-4 h-4 rounded border-gray-300 text-farmer-green-600 focus:ring-farmer-green-500">
+                            <span class="text-gray-700">Remember me</span>
                         </label>
-                        <a href="#" class="forgot-link">Forgot password?</a>
+                        <a href="#"
+                            class="text-sm text-farmer-green-600 hover:text-farmer-green-700 font-medium hover:underline">Forgot
+                            password?</a>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                    <button type="submit"
+                        class="w-full px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-farmer-green-600 to-farmer-green-500 rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Login</button>
                 </form>
-                <p class="form-footer">Don't have an account? <a href="#" id="switchToRegister">Register here</a></p>
+                <p class="text-center mt-6 text-gray-600">Don't have an account? <a href="#" id="switchToRegister"
+                        class="text-farmer-green-600 font-semibold hover:underline">Register here</a></p>
             </div>
 
             <!-- Register Form -->
             <div class="auth-step hidden" id="registerForm">
-                <button class="back-btn" id="backToRoleFromRegister">← Back</button>
-                <h2 class="modal-title">Register as <span id="registerRoleText"></span></h2>
-                <form class="auth-form" id="registrationForm">
-                    <div class="form-group">
-                        <label for="registerName">Full Name</label>
-                        <input type="text" id="registerName" placeholder="Enter your full name" required>
+                <button id="backToRoleFromRegister"
+                    class="mb-6 text-gray-600 hover:text-farmer-green-600 font-medium transition-colors duration-200">←
+                    Back</button>
+                <h2 class="text-2xl sm:text-3xl font-bold text-farmer-green-600 mb-8">Register as <span
+                        id="registerRoleText"></span></h2>
+                <form id="registrationForm" class="space-y-5">
+                    <div>
+                        <label for="registerName" class="block mb-2 font-medium text-gray-700">Full Name</label>
+                        <input type="text" id="registerName" placeholder="Enter your full name" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                     </div>
-                    <div class="form-group">
-                        <label for="registerEmail">Email Address</label>
-                        <input type="email" id="registerEmail" placeholder="your@email.com" required>
+                    <div>
+                        <label for="registerEmail" class="block mb-2 font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="registerEmail" placeholder="your@email.com" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                     </div>
-                    <div class="form-group">
-                        <label for="registerPhone">Phone Number</label>
-                        <input type="tel" id="registerPhone" placeholder="+91 1234567890" required>
+                    <div>
+                        <label for="registerPhone" class="block mb-2 font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" id="registerPhone" placeholder="+91 1234567890" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                     </div>
 
                     <!-- Farmer-specific fields -->
-                    <div id="farmerFields" class="hidden">
-                        <div class="form-group">
-                            <label for="farmLocation">Farm Location</label>
-                            <input type="text" id="farmLocation" placeholder="Village, District, State">
+                    <div id="farmerFields" class="hidden space-y-5">
+                        <div>
+                            <label for="farmLocation" class="block mb-2 font-medium text-gray-700">Farm Location</label>
+                            <input type="text" id="farmLocation" placeholder="Village, District, State"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                         </div>
-                        <div class="form-group">
-                            <label for="farmSize">Farm Size (in acres)</label>
-                            <input type="number" id="farmSize" placeholder="e.g., 5" step="0.1">
+                        <div>
+                            <label for="farmSize" class="block mb-2 font-medium text-gray-700">Farm Size (in
+                                acres)</label>
+                            <input type="number" id="farmSize" placeholder="e.g., 5" step="0.1"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                         </div>
-                        <div class="form-group">
-                            <label for="cropsGrown">Primary Crops Grown</label>
-                            <input type="text" id="cropsGrown" placeholder="e.g., Wheat, Rice, Cotton">
+                        <div>
+                            <label for="cropsGrown" class="block mb-2 font-medium text-gray-700">Primary Crops
+                                Grown</label>
+                            <input type="text" id="cropsGrown" placeholder="e.g., Wheat, Rice, Cotton"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                         </div>
                     </div>
 
                     <!-- Administrator-specific fields -->
-                    <div id="adminFields" class="hidden">
-                        <div class="form-group">
-                            <label for="department">Department</label>
-                            <input type="text" id="department" placeholder="e.g., Operations, Support">
+                    <div id="adminFields" class="hidden space-y-5">
+                        <div>
+                            <label for="department" class="block mb-2 font-medium text-gray-700">Department</label>
+                            <input type="text" id="department" placeholder="e.g., Operations, Support"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="registerPassword">Password</label>
-                        <input type="password" id="registerPassword" placeholder="Create a strong password" required>
+                    <div>
+                        <label for="registerPassword" class="block mb-2 font-medium text-gray-700">Password</label>
+                        <input type="password" id="registerPassword" placeholder="Create a strong password" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                     </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" id="confirmPassword" placeholder="Re-enter your password" required>
+                    <div>
+                        <label for="confirmPassword" class="block mb-2 font-medium text-gray-700">Confirm
+                            Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Re-enter your password" required
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-farmer-green-600 focus:ring-4 focus:ring-farmer-green-100 transition-all duration-200">
                     </div>
-                    <div class="form-options">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="agreeTerms" required>
-                            <span>I agree to the Terms & Conditions</span>
+                    <div>
+                        <label class="flex items-start gap-2 cursor-pointer text-sm">
+                            <input type="checkbox" id="agreeTerms" required
+                                class="w-4 h-4 mt-0.5 rounded border-gray-300 text-farmer-green-600 focus:ring-farmer-green-500">
+                            <span class="text-gray-700">I agree to the Terms & Conditions</span>
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                    <button type="submit"
+                        class="w-full px-6 py-3 text-base font-semibold text-white bg-gradient-to-r from-farmer-green-600 to-farmer-green-500 rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">Create
+                        Account</button>
                 </form>
-                <p class="form-footer">Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
+                <p class="text-center mt-6 text-gray-600">Already have an account? <a href="#" id="switchToLogin"
+                        class="text-farmer-green-600 font-semibold hover:underline">Login here</a></p>
             </div>
         </div>
     </div>
