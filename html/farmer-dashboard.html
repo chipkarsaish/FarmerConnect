@@ -8,58 +8,145 @@
     <meta name="description" content="Farmer dashboard for managing amenities, funds, crops, and more">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/language-switcher.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'farmer': {
+                            'green': {
+                                DEFAULT: '#2d5016',
+                                50: '#f0f7ed',
+                                100: '#e1f0da',
+                                200: '#c3e1b5',
+                                300: '#a5d290',
+                                400: '#87c36b',
+                                500: '#4a7c2c',
+                                600: '#2d5016',
+                                700: '#244012',
+                                800: '#1b300e',
+                                900: '#12200a',
+                            },
+                            'gold': {
+                                DEFAULT: '#f59e0b',
+                                light: '#fbbf24',
+                                50: '#fffbeb',
+                                100: '#fef3c7',
+                                200: '#fde68a',
+                                300: '#fcd34d',
+                                400: '#fbbf24',
+                                500: '#f59e0b',
+                                600: '#d97706',
+                                700: '#b45309',
+                                800: '#92400e',
+                                900: '#78350f',
+                            },
+                            'teal': '#5DBAAA',
+                            'orange': '#E67E22',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'display': ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'fadeInUp': 'fadeInUp 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-3px) rotate(5deg)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
 </head>
 
-<body class="dashboard-body">
+<body class="font-sans antialiased bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
     <!-- Dashboard Header -->
-    <header class="dashboard-header">
-        <div class="header-container">
-            <div class="logo">
-                <span class="logo-text">
-                    <span class="logo-agri">Agr<span class="logo-leaf">🌿</span>i</span><span
-                        class="logo-sahay">Sahay</span>
-                </span>
-            </div>
-            <div class="header-actions">
-                <!-- Language Switcher -->
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="en">English</button>
-                    <button class="lang-btn" data-lang="hi">हिंदी</button>
-                    <button class="lang-btn" data-lang="mr">मराठी</button>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 glass-effect shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <span class="font-display font-black text-2xl sm:text-3xl tracking-tight">
+                        <span class="text-farmer-orange relative">
+                            Agr<span class="absolute -top-3 -right-2 text-base animate-float">🌿</span>i
+                        </span>
+                        <span class="text-farmer-teal">Sahay</span>
+                    </span>
                 </div>
-                <button class="icon-btn" id="notificationBtn" title="Notifications">
-                    🔔
-                    <span class="notification-badge">3</span>
-                </button>
-                <div class="user-menu">
-                    <div class="user-avatar" id="userMenuBtn">
-                        <span id="userInitials">F</span>
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <!-- Language Switcher -->
+                    <div class="flex items-center gap-1 bg-gray-50 p-1 rounded-xl shadow-sm">
+                        <button
+                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white bg-farmer-green-600 rounded-lg transition-all duration-200 hover:bg-farmer-green-700"
+                            data-lang="en">English</button>
+                        <button
+                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-600 hover:bg-farmer-green-50 hover:text-farmer-green-600 rounded-lg transition-all duration-200"
+                            data-lang="hi">हिंदी</button>
+                        <button
+                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-600 hover:bg-farmer-green-50 hover:text-farmer-green-600 rounded-lg transition-all duration-200"
+                            data-lang="mr">मराठी</button>
                     </div>
-                    <div class="user-dropdown hidden" id="userDropdown">
-                        <div class="dropdown-header">
-                            <div class="dropdown-avatar">
-                                <span id="dropdownInitials">F</span>
-                            </div>
-                            <div class="dropdown-info">
-                                <p class="dropdown-name" id="dropdownName">Farmer Name</p>
-                                <p class="dropdown-email" id="dropdownEmail">farmer@example.com</p>
-                            </div>
+                    <button class="relative p-2 text-2xl hover:bg-gray-100 rounded-full transition-colors"
+                        id="notificationBtn" title="Notifications">
+                        🔔
+                        <span
+                            class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    <div class="relative">
+                        <div class="w-10 h-10 bg-gradient-to-br from-farmer-green-600 to-farmer-green-500 rounded-full flex items-center justify-center text-white font-semibold cursor-pointer hover:shadow-lg transition-shadow"
+                            id="userMenuBtn">
+                            <span id="userInitials">F</span>
                         </div>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <span>👤</span> <span data-i18n="dashboard.myProfile">My Profile</span>
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <span>⚙️</span> <span data-i18n="dashboard.settings">Settings</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item" id="logoutBtn">
-                            <span>🚪</span> <span data-i18n="dashboard.logout">Logout</span>
-                        </a>
+                        <div class="hidden absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl py-2 z-50"
+                            id="userDropdown">
+                            <div class="px-4 py-3 border-b border-gray-100">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-br from-farmer-green-600 to-farmer-green-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                        <span id="dropdownInitials">F</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-800" id="dropdownName">Farmer Name</p>
+                                        <p class="text-sm text-gray-500" id="dropdownEmail">farmer@example.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors">
+                                <span>👤</span> <span data-i18n="dashboard.myProfile">My Profile</span>
+                            </a>
+                            <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors">
+                                <span>⚙️</span> <span data-i18n="dashboard.settings">Settings</span>
+                            </a>
+                            <div class="border-t border-gray-100 my-1"></div>
+                            <a href="#"
+                                class="flex items-center gap-3 px-4 py-3 hover:bg-red-50 text-red-600 transition-colors"
+                                id="logoutBtn">
+                                <span>🚪</span> <span data-i18n="dashboard.logout">Logout</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,123 +154,156 @@
     </header>
 
     <!-- Dashboard Content -->
-    <main class="dashboard-main">
-        <div class="dashboard-container">
+    <main class="pt-20 sm:pt-24 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Welcome Section -->
-            <section class="welcome-section">
-                <h1 class="welcome-title" data-i18n="dashboard.welcomeBack">Welcome back, <span
-                        id="welcomeName">Farmer</span>! 👋</h1>
-                <p class="welcome-subtitle" data-i18n="dashboard.welcomeSubtitle">Here's what's happening with your farm
-                    today</p>
+            <section class="mb-8 animate-fadeInUp">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-farmer-green-600 mb-2"
+                    data-i18n="dashboard.welcomeBack">
+                    Welcome back, <span id="welcomeName" class="text-farmer-orange">Farmer</span>! 👋
+                </h1>
+                <p class="text-lg text-gray-600" data-i18n="dashboard.welcomeSubtitle">Here's what's happening with your
+                    farm today</p>
             </section>
 
             <!-- Carbon Credits Progress Bar -->
-            <section class="carbon-credits-section">
-                <div class="carbon-credits-card">
-                    <div class="carbon-credits-header">
-                        <div class="carbon-credits-info">
-                            <p class="carbon-credits-label" data-i18n="dashboard.carbonCreditsLabel">Your Carbon Credits
-                            </p>
-                            <h2 class="carbon-credits-value"><span data-i18n="dashboard.carbonCreditsValue">125
-                                    Credits</span></h2>
+            <section class="mb-8">
+                <div
+                    class="bg-gradient-to-br from-farmer-green-600 to-farmer-green-500 rounded-2xl p-6 sm:p-8 text-white shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-sm sm:text-base opacity-90 mb-1" data-i18n="dashboard.carbonCreditsLabel">
+                                Your Carbon Credits</p>
+                            <h2 class="text-3xl sm:text-4xl font-bold" data-i18n="dashboard.carbonCreditsValue">125
+                                Credits</h2>
                         </div>
-                        <div class="carbon-credits-icon">
-                            🌱
-                        </div>
+                        <div class="text-4xl sm:text-5xl">🌱</div>
                     </div>
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: 75%;"></div>
+                    <div class="w-full bg-white/20 rounded-full h-3 mb-2 overflow-hidden">
+                        <div class="bg-white h-full rounded-full transition-all duration-500" style="width: 75%;"></div>
                     </div>
-                    <p class="progress-label" data-i18n="dashboard.progressLabel">75% to next reward</p>
+                    <p class="text-sm opacity-90" data-i18n="dashboard.progressLabel">75% to next reward</p>
                 </div>
             </section>
 
             <!-- Main Features Grid -->
-            <section class="features-section">
-                <h2 class="section-heading" data-i18n="dashboard.quickAccess">Quick Access</h2>
-                <div class="dashboard-grid">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-farmer-green-600 mb-6" data-i18n="dashboard.quickAccess">
+                    Quick Access</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     <!-- Amenities Tile -->
-                    <div class="dashboard-tile tile-green" data-feature="amenities">
-                        <div class="tile-icon">🌱</div>
-                        <h3 class="tile-title" data-i18n="dashboard.tiles.amenities.title">Amenities</h3>
-                        <p class="tile-description" data-i18n="dashboard.tiles.amenities.description">Rent seeds,
-                            fertilizers & equipment</p>
-                        <div class="tile-arrow">→</div>
+                    <div class="group bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-farmer-green-300"
+                        data-feature="amenities">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🌱</div>
+                        <h3 class="text-xl font-semibold text-farmer-green-600 mb-2"
+                            data-i18n="dashboard.tiles.amenities.title">Amenities</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-i18n="dashboard.tiles.amenities.description">Rent
+                            seeds, fertilizers & equipment</p>
+                        <div
+                            class="text-farmer-green-600 font-bold group-hover:translate-x-2 transition-transform inline-block">
+                            →</div>
                     </div>
 
                     <!-- Funds Tile -->
-                    <div class="dashboard-tile tile-peach" data-feature="funds">
-                        <div class="tile-icon">💰</div>
-                        <h3 class="tile-title" data-i18n="dashboard.tiles.funds.title">Funds</h3>
-                        <p class="tile-description" data-i18n="dashboard.tiles.funds.description">Apply for loans &
-                            financial aid</p>
-                        <div class="tile-arrow">→</div>
+                    <div class="group bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-2xl cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-orange-300"
+                        data-feature="funds">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">💰</div>
+                        <h3 class="text-xl font-semibold text-orange-600 mb-2" data-i18n="dashboard.tiles.funds.title">
+                            Funds</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-i18n="dashboard.tiles.funds.description">Apply for
+                            loans & financial aid</p>
+                        <div
+                            class="text-orange-600 font-bold group-hover:translate-x-2 transition-transform inline-block">
+                            →</div>
                     </div>
 
                     <!-- Availability Tile -->
-                    <div class="dashboard-tile tile-blue" data-feature="availability">
-                        <div class="tile-icon">📊</div>
-                        <h3 class="tile-title" data-i18n="dashboard.tiles.availability.title">Availability</h3>
-                        <p class="tile-description" data-i18n="dashboard.tiles.availability.description">Manage crop
-                            availability</p>
-                        <div class="tile-arrow">→</div>
+                    <div class="group bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-blue-300"
+                        data-feature="availability">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">📊</div>
+                        <h3 class="text-xl font-semibold text-blue-600 mb-2"
+                            data-i18n="dashboard.tiles.availability.title">Availability</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-i18n="dashboard.tiles.availability.description">
+                            Manage crop availability</p>
+                        <div
+                            class="text-blue-600 font-bold group-hover:translate-x-2 transition-transform inline-block">
+                            →</div>
                     </div>
 
                     <!-- Carbon Credit Selling Tile -->
-                    <div class="dashboard-tile tile-cyan" data-feature="carbon-credits">
-                        <div class="tile-icon">🌍</div>
-                        <h3 class="tile-title" data-i18n="dashboard.tiles.carbonCredits.title">Carbon Credits</h3>
-                        <p class="tile-description" data-i18n="dashboard.tiles.carbonCredits.description">View & sell
-                            carbon credits</p>
-                        <div class="tile-arrow">→</div>
+                    <div class="group bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-2xl cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-cyan-300"
+                        data-feature="carbon-credits">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🌍</div>
+                        <h3 class="text-xl font-semibold text-cyan-600 mb-2"
+                            data-i18n="dashboard.tiles.carbonCredits.title">Carbon Credits</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-i18n="dashboard.tiles.carbonCredits.description">View
+                            & sell carbon credits</p>
+                        <div
+                            class="text-cyan-600 font-bold group-hover:translate-x-2 transition-transform inline-block">
+                            →</div>
                     </div>
 
                     <!-- Group Farming Tile -->
-                    <div class="dashboard-tile tile-purple" data-feature="group-farming">
-                        <div class="tile-icon">🤝</div>
-                        <h3 class="tile-title" data-i18n="dashboard.tiles.groupFarming.title">Group Farming</h3>
-                        <p class="tile-description" data-i18n="dashboard.tiles.groupFarming.description">Join farming
-                            cooperatives</p>
-                        <div class="tile-arrow">→</div>
+                    <div class="group bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-purple-300"
+                        data-feature="group-farming">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🤝</div>
+                        <h3 class="text-xl font-semibold text-purple-600 mb-2"
+                            data-i18n="dashboard.tiles.groupFarming.title">Group Farming</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-i18n="dashboard.tiles.groupFarming.description">Join
+                            farming cooperatives</p>
+                        <div
+                            class="text-purple-600 font-bold group-hover:translate-x-2 transition-transform inline-block">
+                            →</div>
                     </div>
 
                     <!-- My Orders Tile -->
-                    <div class="dashboard-tile tile-pink" data-feature="my-orders">
-                        <div class="tile-icon">📦</div>
-                        <h3 class="tile-title" data-i18n="dashboard.tiles.myOrders.title">My Orders</h3>
-                        <p class="tile-description" data-i18n="dashboard.tiles.myOrders.description">View orders &
-                            transactions</p>
-                        <div class="tile-arrow">→</div>
+                    <div class="group bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-2xl cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-pink-300"
+                        data-feature="my-orders">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">📦</div>
+                        <h3 class="text-xl font-semibold text-pink-600 mb-2" data-i18n="dashboard.tiles.myOrders.title">
+                            My Orders</h3>
+                        <p class="text-gray-600 text-sm mb-4" data-i18n="dashboard.tiles.myOrders.description">View
+                            orders & transactions</p>
+                        <div
+                            class="text-pink-600 font-bold group-hover:translate-x-2 transition-transform inline-block">
+                            →</div>
                     </div>
                 </div>
             </section>
 
             <!-- Recent Activity -->
-            <section class="activity-section">
-                <h2 class="section-heading" data-i18n="dashboard.recentActivity">Recent Activity</h2>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-icon activity-success">✓</div>
-                        <div class="activity-content">
-                            <p class="activity-title" data-i18n="dashboard.activity.fertilizerApproved">Fertilizer
-                                rental approved</p>
-                            <p class="activity-time" data-i18n="dashboard.activity.time1">2 hours ago</p>
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-bold text-farmer-green-600 mb-6"
+                    data-i18n="dashboard.recentActivity">Recent Activity</h2>
+                <div class="bg-white rounded-2xl shadow-md p-6 space-y-4">
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                        <div
+                            class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                            ✓</div>
+                        <div class="flex-1">
+                            <p class="font-medium text-gray-800" data-i18n="dashboard.activity.fertilizerApproved">
+                                Fertilizer rental approved</p>
+                            <p class="text-sm text-gray-500" data-i18n="dashboard.activity.time1">2 hours ago</p>
                         </div>
                     </div>
-                    <div class="activity-item">
-                        <div class="activity-icon activity-info">📊</div>
-                        <div class="activity-content">
-                            <p class="activity-title" data-i18n="dashboard.activity.wheatMarked">50 kg wheat marked as
-                                available</p>
-                            <p class="activity-time" data-i18n="dashboard.activity.time2">5 hours ago</p>
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                        <div
+                            class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 text-xl">
+                            📊</div>
+                        <div class="flex-1">
+                            <p class="font-medium text-gray-800" data-i18n="dashboard.activity.wheatMarked">50 kg wheat
+                                marked as available</p>
+                            <p class="text-sm text-gray-500" data-i18n="dashboard.activity.time2">5 hours ago</p>
                         </div>
                     </div>
-                    <div class="activity-item">
-                        <div class="activity-icon activity-warning">🌍</div>
-                        <div class="activity-content">
-                            <p class="activity-title" data-i18n="dashboard.activity.carbonEarned">Earned 25 carbon
-                                credits</p>
-                            <p class="activity-time" data-i18n="dashboard.activity.time3">1 day ago</p>
+                    <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                        <div
+                            class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 text-xl">
+                            🌍</div>
+                        <div class="flex-1">
+                            <p class="font-medium text-gray-800" data-i18n="dashboard.activity.carbonEarned">Earned 25
+                                carbon credits</p>
+                            <p class="text-sm text-gray-500" data-i18n="dashboard.activity.time3">1 day ago</p>
                         </div>
                     </div>
                 </div>
