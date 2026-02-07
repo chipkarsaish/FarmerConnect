@@ -8,167 +8,63 @@
     <meta name="description" content="Rent seeds, fertilizers & equipment at affordable rates">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'farmer': {
-                            'green': {
-                                DEFAULT: '#2d5016',
-                                50: '#f0f7ed',
-                                100: '#e1f0da',
-                                200: '#c3e1b5',
-                                300: '#a5d290',
-                                400: '#87c36b',
-                                500: '#4a7c2c',
-                                600: '#2d5016',
-                                700: '#244012',
-                                800: '#1b300e',
-                                900: '#12200a',
-                            },
-                            'gold': {
-                                DEFAULT: '#f59e0b',
-                                light: '#fbbf24',
-                                50: '#fffbeb',
-                                100: '#fef3c7',
-                                200: '#fde68a',
-                                300: '#fcd34d',
-                                400: '#fbbf24',
-                                500: '#f59e0b',
-                                600: '#d97706',
-                                700: '#b45309',
-                                800: '#92400e',
-                                900: '#78350f',
-                            },
-                            'teal': '#5DBAAA',
-                            'orange': '#E67E22',
-                        }
-                    },
-                    fontFamily: {
-                        'sans': ['Poppins', 'sans-serif'],
-                        'display': ['Montserrat', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-
-    <style>
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-    </style>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/farmer-sidebar.css">
+    <link rel="stylesheet" href="../css/amenities-styles.css">
+    <link rel="stylesheet" href="../css/language-switcher.css">
 </head>
 
-<body class="font-sans antialiased bg-gray-50">
+<body class="amenities-body">
     <!-- Mobile Sidebar Toggle -->
-    <button class="lg:hidden fixed top-4 left-4 z-50 p-3 bg-farmer-green-600 text-white rounded-lg shadow-lg"
-        id="mobileSidebarToggle">☰</button>
+    <button class="mobile-sidebar-toggle" style="display: none;">☰</button>
 
     <!-- Farmer Sidebar -->
-    <aside
-        class="fixed left-0 top-0 h-screen w-64 bg-farmer-green-600 text-white z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300"
-        id="sidebar">
-        <button
-            class="absolute -right-3 top-20 bg-farmer-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center shadow-lg hidden lg:flex"
-            id="sidebarToggle">◀</button>
+    <aside class="farmer-sidebar">
+        <button class="sidebar-toggle">◀</button>
 
-        <nav class="p-6 pt-20">
-            <ul class="space-y-2">
-                <li>
-                    <a href="amenities.html"
-                        class="flex items-center gap-3 px-4 py-3 rounded-lg bg-farmer-green-700 hover:bg-farmer-green-700 transition-colors"
-                        data-tooltip="Amenities">
-                        <span class="text-2xl">🌱</span>
-                        <span class="font-medium" data-i18n="sidebar.amenities">Amenities</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="carbon-credits.html"
-                        class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-farmer-green-700 transition-colors"
-                        data-tooltip="Carbon Credits">
-                        <span class="text-2xl">🌍</span>
-                        <span class="font-medium" data-i18n="sidebar.carbonCredits">Carbon Credits</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="group-farming.html"
-                        class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-farmer-green-700 transition-colors"
-                        data-tooltip="Group Farming">
-                        <span class="text-2xl">🤝</span>
-                        <span class="font-medium" data-i18n="sidebar.groupFarming">Group Farming</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="funds.html"
-                        class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-farmer-green-700 transition-colors"
-                        data-tooltip="Funds & Loans">
-                        <span class="text-2xl">💰</span>
-                        <span class="font-medium" data-i18n="sidebar.funds">Funds & Loans</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="availability.html"
-                        class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-farmer-green-700 transition-colors"
-                        data-tooltip="Availability">
-                        <span class="text-2xl">📅</span>
-                        <span class="font-medium" data-i18n="sidebar.availability">Availability</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="my-orders.html"
-                        class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-farmer-green-700 transition-colors"
-                        data-tooltip="My Orders">
-                        <span class="text-2xl">📦</span>
-                        <span class="font-medium" data-i18n="sidebar.myOrders">My Orders</span>
-                    </a>
-                </li>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active"><a href="amenities.html" data-tooltip="Amenities"><span
+                            class="nav-icon">🌱</span><span class="nav-text"
+                            data-i18n="sidebar.amenities">Amenities</span></a></li>
+                <li><a href="carbon-credits.html" data-tooltip="Carbon Credits"><span class="nav-icon">🌍</span><span
+                            class="nav-text" data-i18n="sidebar.carbonCredits">Carbon Credits</span></a></li>
+                <li><a href="group-farming.html" data-tooltip="Group Farming"><span class="nav-icon">🤝</span><span
+                            class="nav-text" data-i18n="sidebar.groupFarming">Group Farming</span></a></li>
+                <li><a href="funds.html" data-tooltip="Funds & Loans"><span class="nav-icon">💰</span><span
+                            class="nav-text" data-i18n="sidebar.funds">Funds & Loans</span></a></li>
+                <li><a href="availability.html" data-tooltip="Availability"><span class="nav-icon">📅</span><span
+                            class="nav-text" data-i18n="sidebar.availability">Availability</span></a></li>
+                <li><a href="my-orders.html" data-tooltip="My Orders"><span class="nav-icon">📦</span><span
+                            class="nav-text" data-i18n="sidebar.myOrders">My Orders</span></a></li>
             </ul>
         </nav>
     </aside>
 
     <!-- Header -->
-    <header class="fixed top-0 left-0 lg:left-64 right-0 z-30 bg-white/95 glass-effect shadow-sm">
-        <div class="px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center gap-2">
-                    <span class="font-display font-black text-2xl sm:text-3xl tracking-tight">
-                        <span class="text-farmer-orange relative">
-                            Agr<span class="absolute -top-3 -right-2 text-base">🌿</span>i
-                        </span>
-                        <span class="text-farmer-teal">Sahay</span>
-                    </span>
+    <header class="dashboard-header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-text">
+                    <span class="logo-agri">Agr<span class="logo-leaf">🌿</span>i</span><span
+                        class="logo-sahay">Sahay</span>
+                </span>
+            </div>
+            <div class="header-actions">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="hi">हिंदी</button>
+                    <button class="lang-btn" data-lang="mr">मराठी</button>
                 </div>
-                <div class="flex items-center gap-2 sm:gap-4">
-                    <!-- Language Switcher -->
-                    <div class="flex items-center gap-1 bg-gray-50 p-1 rounded-xl shadow-sm">
-                        <button
-                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white bg-farmer-green-600 rounded-lg transition-all"
-                            data-lang="en">English</button>
-                        <button
-                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-600 hover:bg-farmer-green-50 hover:text-farmer-green-600 rounded-lg transition-all"
-                            data-lang="hi">हिंदी</button>
-                        <button
-                            class="lang-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-600 hover:bg-farmer-green-50 hover:text-farmer-green-600 rounded-lg transition-all"
-                            data-lang="mr">मराठी</button>
-                    </div>
-                    <button class="relative p-2 text-2xl hover:bg-gray-100 rounded-full transition-colors"
-                        id="notificationBtn" title="Notifications">
-                        🔔
-                        <span
-                            class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">2</span>
-                    </button>
-                    <div class="w-10 h-10 bg-gradient-to-br from-farmer-green-600 to-farmer-green-500 rounded-full flex items-center justify-center text-white font-semibold cursor-pointer"
-                        id="userMenuBtn">
+                <button class="icon-btn" id="notificationBtn" title="Notifications">
+                    🔔
+                    <span class="notification-badge">2</span>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar" id="userMenuBtn">
                         <span id="userInitials">F</span>
                     </div>
                 </div>
@@ -177,137 +73,105 @@
     </header>
 
     <!-- Main Content -->
-    <main class="lg:ml-64 pt-20 sm:pt-24 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <a href="./farmer-dashboard.html"
-                class="inline-flex items-center text-farmer-green-600 hover:text-farmer-green-700 font-medium mb-6"
-                data-i18n="common.backToDashboard">
-                ← Back to Dashboard
-            </a>
+    <main class="amenities-main main-content-with-sidebar">
+        <div class="amenities-container">
+            <a href="./farmer-dashboard.html" class="back-link" data-i18n="common.backToDashboard">← Back to
+                Dashboard</a>
 
             <!-- Page Title Section -->
-            <section class="mb-8">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-farmer-green-600 mb-2"
-                    data-i18n="amenities.pageTitle">🌱 Amenities Rental</h1>
-                <p class="text-lg text-gray-600" data-i18n="amenities.pageSubtitle">Rent seeds, fertilizers & equipment
-                    at affordable rates</p>
+            <section class="page-title-section-main">
+                <h1 class="page-main-title" data-i18n="amenities.pageTitle">🌱 Amenities Rental</h1>
+                <p class="page-main-subtitle" data-i18n="amenities.pageSubtitle">Rent seeds, fertilizers & equipment at
+                    affordable rates</p>
             </section>
 
             <!-- Location Selector -->
-            <section class="mb-6">
-                <div class="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm max-w-md">
-                    <span class="text-2xl">📍</span>
-                    <select id="locationSelect"
-                        class="flex-1 bg-transparent border-none outline-none font-medium text-gray-700">
+            <section class="location-controls">
+                <div class="location-selector">
+                    <span class="location-icon">📍</span>
+                    <select id="locationSelect" class="location-input">
                         <option value="pune">Pune, Maharashtra</option>
                         <option value="nashik">Nashik, Maharashtra</option>
                         <option value="solapur">Solapur, Maharashtra</option>
                     </select>
                 </div>
             </section>
-
             <!-- Incentive Banner -->
-            <div
-                class="bg-gradient-to-r from-farmer-gold-100 to-farmer-gold-200 border-2 border-farmer-gold-400 rounded-2xl p-4 sm:p-6 mb-8 flex items-center gap-4 relative">
-                <div class="text-4xl">🎁</div>
-                <div class="flex-1">
-                    <p class="text-gray-800">
-                        <strong data-i18n="amenities.incentive.specialOffer">Special Offer:</strong>
-                        <span data-i18n="amenities.incentive.discount">Sell crops via marketplace & get</span>
-                        <strong data-i18n="amenities.incentive.discountAmount"> 25% rental discount</strong>
+            <div class="incentive-banner">
+                <div class="incentive-icon">🎁</div>
+                <div class="incentive-content">
+                    <p class="incentive-text"><strong data-i18n="amenities.incentive.specialOffer">Special
+                            Offer:</strong> <span data-i18n="amenities.incentive.discount">Sell crops via marketplace &
+                            get</span>
+                        <strong data-i18n="amenities.incentive.discountAmount">25% rental discount</strong>
                     </p>
                 </div>
-                <button class="text-2xl text-gray-600 hover:text-gray-800 transition-colors" id="closeBanner">×</button>
+                <button class="incentive-close">×</button>
             </div>
 
             <!-- Category Selection -->
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-farmer-green-600 mb-6" data-i18n="amenities.categories.title">Browse
-                    by Category</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                    <div class="category-card bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer border-2 border-farmer-green-600 transition-all"
-                        data-category="all">
-                        <div class="text-3xl mb-2 text-center">🌾</div>
-                        <h3 class="font-semibold text-center text-sm" data-i18n="amenities.categories.all">All Items
-                        </h3>
-                        <p class="text-xs text-gray-500 text-center">156 <span
-                                data-i18n="amenities.categories.itemsCount">items</span></p>
+            <section class="category-section">
+                <h2 class="section-title" data-i18n="amenities.categories.title">Browse by Category</h2>
+                <div class="category-grid">
+                    <div class="category-card active" data-category="all">
+                        <div class="category-icon">🌾</div>
+                        <h3 class="category-name" data-i18n="amenities.categories.all">All Items</h3>
+                        <p class="category-count">156 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
-                    <div class="category-card bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer border-2 border-transparent hover:border-farmer-green-600 transition-all"
-                        data-category="seeds">
-                        <div class="text-3xl mb-2 text-center">🌱</div>
-                        <h3 class="font-semibold text-center text-sm" data-i18n="amenities.categories.seeds">Seeds</h3>
-                        <p class="text-xs text-gray-500 text-center">45 <span
-                                data-i18n="amenities.categories.itemsCount">items</span></p>
+                    <div class="category-card" data-category="seeds">
+                        <div class="category-icon">🌱</div>
+                        <h3 class="category-name" data-i18n="amenities.categories.seeds">Seeds</h3>
+                        <p class="category-count">45 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
-                    <div class="category-card bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer border-2 border-transparent hover:border-farmer-green-600 transition-all"
-                        data-category="fertilizers">
-                        <div class="text-3xl mb-2 text-center">🧪</div>
-                        <h3 class="font-semibold text-center text-sm" data-i18n="amenities.categories.fertilizers">
-                            Fertilizers</h3>
-                        <p class="text-xs text-gray-500 text-center">38 <span
-                                data-i18n="amenities.categories.itemsCount">items</span></p>
+                    <div class="category-card" data-category="fertilizers">
+                        <div class="category-icon">🧪</div>
+                        <h3 class="category-name" data-i18n="amenities.categories.fertilizers">Fertilizers</h3>
+                        <p class="category-count">38 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
-                    <div class="category-card bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer border-2 border-transparent hover:border-farmer-green-600 transition-all"
-                        data-category="machinery">
-                        <div class="text-3xl mb-2 text-center">🚜</div>
-                        <h3 class="font-semibold text-center text-sm" data-i18n="amenities.categories.machinery">
-                            Machinery</h3>
-                        <p class="text-xs text-gray-500 text-center">42 <span
-                                data-i18n="amenities.categories.itemsCount">items</span></p>
+                    <div class="category-card" data-category="machinery">
+                        <div class="category-icon">🚜</div>
+                        <h3 class="category-name" data-i18n="amenities.categories.machinery">Machinery</h3>
+                        <p class="category-count">42 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
-                    <div class="category-card bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer border-2 border-transparent hover:border-farmer-green-600 transition-all"
-                        data-category="irrigation">
-                        <div class="text-3xl mb-2 text-center">💧</div>
-                        <h3 class="font-semibold text-center text-sm" data-i18n="amenities.categories.irrigation">
-                            Irrigation</h3>
-                        <p class="text-xs text-gray-500 text-center">21 <span
-                                data-i18n="amenities.categories.itemsCount">items</span></p>
+                    <div class="category-card" data-category="irrigation">
+                        <div class="category-icon">💧</div>
+                        <h3 class="category-name" data-i18n="amenities.categories.irrigation">Irrigation</h3>
+                        <p class="category-count">21 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
-                    <div class="category-card bg-white p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer border-2 border-transparent hover:border-farmer-green-600 transition-all"
-                        data-category="organic">
-                        <div class="text-3xl mb-2 text-center">♻️</div>
-                        <h3 class="font-semibold text-center text-sm" data-i18n="amenities.categories.organic">Organic
-                        </h3>
-                        <p class="text-xs text-gray-500 text-center">10 <span
-                                data-i18n="amenities.categories.itemsCount">items</span></p>
+                    <div class="category-card" data-category="organic">
+                        <div class="category-icon">♻️</div>
+                        <h3 class="category-name" data-i18n="amenities.categories.organic">Organic</h3>
+                        <p class="category-count">10 <span data-i18n="amenities.categories.itemsCount">items</span></p>
                     </div>
                 </div>
             </section>
 
             <!-- Search & Filter Section -->
-            <section class="mb-8">
-                <div class="flex flex-col sm:flex-row gap-4 mb-4">
-                    <div class="flex-1 flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-sm">
-                        <span class="text-xl">🔍</span>
+            <section class="search-filter-section">
+                <div class="search-bar-container">
+                    <div class="search-bar">
+                        <span class="search-icon">🔍</span>
                         <input type="text" id="searchInput" data-i18n-placeholder="amenities.search.placeholder"
-                            placeholder="Search seed, tractor, fertilizer..."
-                            class="flex-1 bg-transparent border-none outline-none">
-                        <button class="text-xl hover:scale-110 transition-transform" title="Voice Search">🎤</button>
+                            placeholder="Search seed, tractor, fertilizer..." class="search-input">
+                        <button class="voice-search-btn" title="Voice Search">🎤</button>
                     </div>
-                    <button
-                        class="flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow font-medium"
-                        id="filterToggleBtn">
+                    <button class="filter-toggle-btn" id="filterToggleBtn">
                         <span>⚙️</span> <span data-i18n="amenities.search.filters">Filters</span>
-                        <span class="hidden bg-farmer-green-600 text-white text-xs px-2 py-1 rounded-full"
-                            id="filterCount">0</span>
+                        <span class="filter-count hidden" id="filterCount">0</span>
                     </button>
                 </div>
 
                 <!-- Filter Panel -->
-                <div class="hidden bg-white rounded-2xl shadow-lg p-6 mb-4" id="filterPanel">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-xl font-bold" data-i18n="amenities.search.filters">Filters</h3>
-                        <button class="text-farmer-green-600 font-medium hover:underline" id="clearFiltersBtn"
+                <div class="filter-panel hidden" id="filterPanel">
+                    <div class="filter-header">
+                        <h3 data-i18n="amenities.search.filters">Filters</h3>
+                        <button class="clear-filters-btn" id="clearFiltersBtn"
                             data-i18n="amenities.search.clearAll">Clear All</button>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2"
-                                data-i18n="amenities.filters.cropType">Crop Type</label>
-                            <select
-                                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-farmer-green-600"
-                                id="cropTypeFilter">
+                    <div class="filter-content">
+                        <div class="filter-group">
+                            <label class="filter-label" data-i18n="amenities.filters.cropType">Crop Type</label>
+                            <select class="filter-select" id="cropTypeFilter">
                                 <option value="" data-i18n="amenities.filters.allCrops">All Crops</option>
                                 <option value="wheat" data-i18n="amenities.filters.wheat">Wheat</option>
                                 <option value="rice" data-i18n="amenities.filters.rice">Rice</option>
@@ -316,49 +180,50 @@
                                 <option value="vegetables" data-i18n="amenities.filters.vegetables">Vegetables</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2"
-                                data-i18n="amenities.filters.season">Season</label>
-                            <select
-                                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-farmer-green-600"
-                                id="seasonFilter">
+                        <div class="filter-group">
+                            <label class="filter-label" data-i18n="amenities.filters.season">Season</label>
+                            <select class="filter-select" id="seasonFilter">
                                 <option value="" data-i18n="amenities.filters.allSeasons">All Seasons</option>
                                 <option value="kharif" data-i18n="amenities.filters.kharif">Kharif</option>
                                 <option value="rabi" data-i18n="amenities.filters.rabi">Rabi</option>
                                 <option value="zaid" data-i18n="amenities.filters.zaid">Zaid</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2"
-                                data-i18n="amenities.filters.rentalDuration">Rental Duration</label>
-                            <select
-                                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-farmer-green-600"
-                                id="durationFilter">
+                        <div class="filter-group">
+                            <label class="filter-label" data-i18n="amenities.filters.rentalDuration">Rental
+                                Duration</label>
+                            <select class="filter-select" id="durationFilter">
                                 <option value="" data-i18n="amenities.filters.anyDuration">Any Duration</option>
                                 <option value="day" data-i18n="amenities.filters.perDay">Per Day</option>
                                 <option value="week" data-i18n="amenities.filters.perWeek">Per Week</option>
                                 <option value="season" data-i18n="amenities.filters.perSeason">Per Season</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2"
-                                data-i18n="amenities.filters.priceRange">Price Range (₹)</label>
-                            <div class="flex items-center gap-2">
+                        <div class="filter-group">
+                            <label class="filter-label" data-i18n="amenities.filters.priceRange">Price Range (₹)</label>
+                            <div class="price-range">
                                 <input type="number" id="minPrice" data-i18n-placeholder="amenities.filters.min"
-                                    placeholder="Min"
-                                    class="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-farmer-green-600">
+                                    placeholder="Min" class="price-input">
                                 <span>-</span>
                                 <input type="number" id="maxPrice" data-i18n-placeholder="amenities.filters.max"
-                                    placeholder="Max"
-                                    class="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-farmer-green-600">
+                                    placeholder="Max" class="price-input">
                             </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2"
-                                data-i18n="amenities.filters.sortBy">Sort By</label>
-                            <select
-                                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-farmer-green-600"
-                                id="sortFilter">
+                        <div class="filter-group">
+                            <label class="filter-label" data-i18n="amenities.filters.availability">Availability</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="available"> <span
+                                        data-i18n="amenities.filters.availableNow">Available Now</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="nearby"> <span
+                                        data-i18n="amenities.filters.nearby">Nearby (< 10km)</span> </label>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label" data-i18n="amenities.filters.sortBy">Sort By</label>
+                            <select class="filter-select" id="sortFilter">
                                 <option value="popular" data-i18n="amenities.filters.mostPopular">Most Popular</option>
                                 <option value="price-low" data-i18n="amenities.filters.priceLowToHigh">Price: Low to
                                     High</option>
@@ -369,38 +234,34 @@
                             </select>
                         </div>
                     </div>
-                    <div class="flex gap-4 mt-6">
-                        <button
-                            class="flex-1 px-6 py-3 border-2 border-gray-300 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
-                            id="cancelFilterBtn" data-i18n="amenities.search.cancel">Cancel</button>
-                        <button
-                            class="flex-1 px-6 py-3 bg-gradient-to-r from-farmer-green-600 to-farmer-green-500 text-white rounded-xl font-semibold hover:shadow-lg transition-shadow"
-                            id="applyFilterBtn" data-i18n="amenities.search.applyFilters">Apply Filters</button>
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" id="cancelFilterBtn"
+                            data-i18n="amenities.search.cancel">Cancel</button>
+                        <button class="btn btn-primary" id="applyFilterBtn"
+                            data-i18n="amenities.search.applyFilters">Apply Filters</button>
                     </div>
                 </div>
 
                 <!-- Active Filters Chips -->
-                <div class="hidden flex flex-wrap gap-2" id="activeFilters"></div>
+                <div class="active-filters hidden" id="activeFilters"></div>
             </section>
 
             <!-- Amenities Listing -->
-            <section>
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-farmer-green-600" data-i18n="amenities.listing.title">Available
-                        Amenities</h2>
-                    <p class="text-gray-600"><span id="itemCount" class="font-bold">156</span> <span
+            <section class="amenities-listing">
+                <div class="listing-header">
+                    <h2 class="section-title" data-i18n="amenities.listing.title">Available Amenities</h2>
+                    <p class="listing-count"><span id="itemCount">156</span> <span
                             data-i18n="amenities.listing.itemsFound">items found</span></p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="amenitiesGrid">
+                <div class="amenities-grid" id="amenitiesGrid">
                     <!-- Amenity Cards will be dynamically generated -->
                 </div>
 
                 <!-- Load More -->
-                <div class="text-center">
-                    <button
-                        class="px-8 py-3 border-2 border-farmer-green-600 text-farmer-green-600 rounded-xl font-semibold hover:bg-farmer-green-50 transition-colors"
-                        id="loadMoreBtn" data-i18n="amenities.listing.loadMore">Load More Items</button>
+                <div class="load-more-container">
+                    <button class="btn btn-outline btn-large" id="loadMoreBtn"
+                        data-i18n="amenities.listing.loadMore">Load More Items</button>
                 </div>
             </section>
         </div>
