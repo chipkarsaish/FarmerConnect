@@ -44,7 +44,10 @@ heroRegisterBtn.addEventListener('click', () => openModal('register'));
 
 // Learn More - Scroll to features
 heroLearnBtn.addEventListener('click', () => {
-    document.querySelector('.features').scrollIntoView({ behavior: 'smooth' });
+    const featuresSection = document.querySelector('section.py-16');
+    if (featuresSection) {
+        featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
 });
 
 // Event Listeners - Close Modal
@@ -77,19 +80,21 @@ switchToLogin.addEventListener('click', (e) => {
 });
 
 // Event Listeners - Form Submissions
-document.querySelector('#loginForm .auth-form').addEventListener('submit', handleLogin);
+document.querySelector('#loginForm form').addEventListener('submit', handleLogin);
 document.getElementById('registrationForm').addEventListener('submit', handleRegister);
 
 // Functions
 function openModal(mode) {
     currentAuthMode = mode;
-    modal.classList.add('active');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
     showRoleSelection();
 }
 
 function closeModal() {
-    modal.classList.remove('active');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
     document.body.style.overflow = 'auto';
     resetModal();
 }
@@ -244,7 +249,7 @@ function handleRegister(e) {
 
 // Close modal on Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
         closeModal();
     }
 });
@@ -262,15 +267,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Navbar scroll effect
 let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
+const navbar = document.querySelector('nav');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
     if (currentScroll > 100) {
-        navbar.style.boxShadow = 'var(--shadow-md)';
+        navbar.classList.remove('shadow-sm');
+        navbar.classList.add('shadow-md');
     } else {
-        navbar.style.boxShadow = 'var(--shadow-sm)';
+        navbar.classList.remove('shadow-md');
+        navbar.classList.add('shadow-sm');
     }
 
     lastScroll = currentScroll;

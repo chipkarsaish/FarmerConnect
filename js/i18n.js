@@ -140,9 +140,13 @@ class I18n {
         document.querySelectorAll('.lang-btn').forEach(btn => {
             const btnLang = btn.getAttribute('data-lang');
             if (btnLang === this.currentLang) {
-                btn.classList.add('active');
+                // Active state - Tailwind classes
+                btn.classList.add('bg-farmer-green-600', 'text-white');
+                btn.classList.remove('text-gray-600', 'hover:bg-farmer-green-50', 'hover:text-farmer-green-600');
             } else {
-                btn.classList.remove('active');
+                // Inactive state - Tailwind classes
+                btn.classList.remove('bg-farmer-green-600', 'text-white');
+                btn.classList.add('text-gray-600', 'hover:bg-farmer-green-50', 'hover:text-farmer-green-600');
             }
         });
 
